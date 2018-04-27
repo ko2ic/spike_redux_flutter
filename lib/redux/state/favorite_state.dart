@@ -9,7 +9,7 @@ class FavoriteState {
 
   const FavoriteState({this.favoriteList});
 
-  static FavoriteState copyWith({
+  FavoriteState copyWith({
     List<RepoEntity> favoriteList,
   }) {
     return new FavoriteState(
@@ -18,17 +18,3 @@ class FavoriteState {
   }
 }
 
-class FavoriteItemState {
-
-  final bool isFavorite;
-
-  const FavoriteItemState({this.isFavorite});
-
-  static FavoriteItemState copyWith({
-    bool isFavorite,
-  }) {
-    return new FavoriteItemState(
-      isFavorite: isFavorite,
-    );
-  }
-}

@@ -7,11 +7,11 @@ import 'package:flutter/rendering.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_search_bar/flutter_search_bar.dart';
-import 'package:spike_redux_flutter/actions/actions.dart';
+import 'package:spike_redux_flutter/redux/action/actions.dart';
 
-import 'package:spike_redux_flutter/middleware/fetch_repo_list_midleware.dart';
-import 'package:spike_redux_flutter/reducers/app_state_reducer.dart';
-import 'package:spike_redux_flutter/models/app_state.dart';
+import 'package:spike_redux_flutter/redux/middleware/fetch_repo_list_midleware.dart';
+import 'package:spike_redux_flutter/redux/reducer/app_state_reducer.dart';
+import 'package:spike_redux_flutter/redux/state/app_state.dart';
 import 'package:spike_redux_flutter/models/repo_entity.dart';
 import 'package:spike_redux_flutter/ui/github_list_page.dart';
 
@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
           new StoreBuilder<AppState>(
           onInit: (store) => store.dispatch(new FetchRepoListAction("ko2")),
           builder: (context, store) {
-            return new GithubListPage(store);
+            return new GithubListWidget(store);
           },
         )
       )

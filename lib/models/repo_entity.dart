@@ -4,13 +4,11 @@ class RepoEntity {
     this.name,
     this.fullName,
     this.stars,
-    this.isFavorite = false,
   });
 
   final String name;
   final String fullName;
   final int stars;
-  final bool isFavorite;
 
   factory RepoEntity.fromJson(Map<String, dynamic> json) {
     return new RepoEntity(
@@ -24,13 +22,11 @@ class RepoEntity {
     final String name,
     final String fullName,
     final int stars,
-    final bool isFavorite,
   }) {
     return new RepoEntity(
       name: name ?? this.name,
       fullName: fullName ?? this.fullName,
       stars: stars ?? this.stars,
-      isFavorite: isFavorite ?? this.isFavorite,
     );
   }
 }

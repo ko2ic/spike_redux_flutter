@@ -1,33 +1,33 @@
 
-import 'package:meta/meta.dart';
-import 'package:spike_redux_flutter/models/favorite_state.dart';
+import 'package:flutter/foundation.dart';
 import 'package:spike_redux_flutter/models/repo_entity.dart';
+import 'package:spike_redux_flutter/redux/state/favorite_state.dart';
 
 @immutable
 class AppState {
+
   final bool isLoading;
   final List<RepoEntity> repoList;
   final FavoriteState favoriteState;
 
-  AppState(
+  const AppState(
       {
         this.isLoading = false,
         this.repoList = const [],
         this.favoriteState = const FavoriteState(favoriteList: const []),
       });
 
-  factory AppState.loading() => new AppState(isLoading: true);
+  factory AppState.loading() => const AppState(isLoading: true);
 
   AppState copyWith({
     bool isLoading,
     List<RepoEntity> repoList,
-    FavoriteState favoriteState,
-    FavoriteItemState favoriteItemState
+    List<RepoEntity> favorites,
   }) {
     return new AppState(
         isLoading: isLoading ?? this.isLoading,
         repoList: repoList ?? this.repoList,
-        favoriteState: favoriteState ?? this.favoriteState,
+        favoriteState: favorites ?? this.favoriteState
     );
   }
 
@@ -48,6 +48,6 @@ class AppState {
 
   @override
   String toString() {
-    return 'AppState{isLoading: $isLoading, repoList: $repoList, favoriteState: $favoriteState}';
+    return 'AppState{isLoading: $isLoading, repoList: $repoList, favorites: $favoriteState}';
   }
 }

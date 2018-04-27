@@ -1,14 +1,7 @@
 import 'package:spike_redux_flutter/models/repo_entity.dart';
 
-class RepoListNotLoadedAction {}
-class RepoListLoadedAction {
-  final List<RepoEntity> repoList;
-  RepoListLoadedAction(this.repoList);
-  @override
-  String toString() {
-    return 'RepoListLoadedAction{repoList: $repoList}';
-  }
-}
+class LoadCompleteAction {}
+class LoadingAction {}
 
 class FetchRepoListAction {
   final String keyword;
@@ -26,6 +19,7 @@ class FetchRepoListFailedAction {
 }
 
 class FavoriteAction{
-  final RepoEntity entity;
-  const FavoriteAction(this.entity);
+  final List<RepoEntity> favorites;
+  final RepoEntity target;
+  const FavoriteAction(this.favorites, this.target);
 }
