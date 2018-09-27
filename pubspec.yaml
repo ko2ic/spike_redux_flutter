@@ -16,10 +16,15 @@ dependencies:
   http: "^0.11.3+16"
 
 dev_dependencies:
+  mockito: ^3.0.0
+  mock_web_server: ^2.1.0
   flutter_test:
     sdk: flutter
 
-
+dependency_overrides:
+  mock_web_server:
+    git:
+      url: https://gitlab.com/haarts/MockWebServer.git
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
 
