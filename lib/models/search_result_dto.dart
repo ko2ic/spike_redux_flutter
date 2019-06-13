@@ -16,10 +16,10 @@ class SearchResultDto {
   factory SearchResultDto.fromJson(Map<String, dynamic> json) {
     List<RepoEntity> repoList = [];
     for (var repo in json['items']) {
-      repoList.add(new RepoEntity.fromJson(repo));
+      repoList.add( RepoEntity.fromJson(repo));
     }
 
-    return new SearchResultDto(
+    return  SearchResultDto(
       totalCount: json['total_count'],
       isIncompleteResults: json['incomplete_results'],
       items: repoList ,

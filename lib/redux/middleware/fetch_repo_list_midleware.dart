@@ -23,11 +23,11 @@ void Function(
 ) {
   return (store, action, next) {
     next(action);
-    next(new LoadingAction());
+    next( LoadingAction());
     repository.fetch(action.keyword).then((SearchResultDto dto) {
-      next(new FetchRepoListSucceededAction(dto.items));
-    }).catchError((Exception error) {
-      next(new FetchRepoListFailedAction(error));
-    }).whenComplete(() => next(new LoadCompleteAction()));
+      next( FetchRepoListSucceededAction(dto.items));
+    }).catchError((error) {
+      next( FetchRepoListFailedAction(error));
+    }).whenComplete(() => next( LoadCompleteAction()));
   };
 }

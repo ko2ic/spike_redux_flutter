@@ -9,30 +9,30 @@ import 'package:spike_redux_flutter/repositories/github_repository_impl.dart';
 import 'package:spike_redux_flutter/ui/github_list_page.dart';
 
 void main() {
-  runApp(new MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  static GithubRepositoryImpl repository = new GithubRepositoryImpl();
-  var store = new Store<AppState>(
+  static GithubRepositoryImpl repository = GithubRepositoryImpl();
+  var store = Store<AppState>(
     appReducer,
-    initialState: new AppState.loading(),
+    initialState: AppState.loading(),
     middleware: fetchRepoListMiddleware(repository),
   );
 
   @override
   Widget build(BuildContext context) {
-    return new StoreProvider(
+    return StoreProvider(
         store: store,
-        child: new MaterialApp(
+        child: MaterialApp(
             title: 'Flutter Demo',
-            theme: new ThemeData(
+            theme: ThemeData(
               primaryColor: Colors.green,
             ),
-            home: new StoreBuilder<AppState>(
-              onInit: (store) => store.dispatch(new FetchRepoListAction("ko2")),
+            home: StoreBuilder<AppState>(
+              onInit: (store) => store.dispatch(FetchRepoListAction("ko2")),
               builder: (context, store) {
-                return new GithubListWidget(store);
+                return GithubListWidget(store);
               },
             )));
   }

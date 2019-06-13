@@ -6,8 +6,8 @@ import 'package:spike_redux_flutter/redux/action/actions.dart';
 import 'package:spike_redux_flutter/models/repo_entity.dart';
 
 final repoListReducer = combineReducers<List<RepoEntity>>([
-  new TypedReducer<List<RepoEntity>, FetchRepoListSucceededAction>(_setLoadedRepoList),
-  new TypedReducer<List<RepoEntity>, FetchRepoListFailedAction>(_setNoRepoList),
+   TypedReducer<List<RepoEntity>, FetchRepoListSucceededAction>(_setLoadedRepoList),
+   TypedReducer<List<RepoEntity>, FetchRepoListFailedAction>(_setNoRepoList),
 ]);
 
 

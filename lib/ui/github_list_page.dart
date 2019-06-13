@@ -18,28 +18,28 @@ class GithubListWidget extends StatefulWidget {
 
   @override
   createState() {
-    return new GithubListPage(this._store);
+    return  GithubListPage(this._store);
   }
 }
 
 class GithubListPage extends State<GithubListWidget> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey =  GlobalKey<ScaffoldState>();
 
   SearchBar searchBar;
   final _biggerFont = const TextStyle(fontSize: 18.0);
 
   GithubListPage(Store<AppState> store) {
-    searchBar = new SearchBar(
+    searchBar =  SearchBar(
         inBar: false,
         setState: (fn) => fn(), // searchbar表示のため
         onSubmitted: (freeword) =>
-            store.dispatch(new FetchRepoListAction(freeword)),
+            store.dispatch( FetchRepoListAction(freeword)),
         buildDefaultAppBar: buildAppBar);
   }
 
   AppBar buildAppBar(BuildContext context) {
-    return new AppBar(
-      title: new Text('GitHub検索'),
+    return  AppBar(
+      title:  Text('GitHub検索'),
       actions: <Widget>[
         searchBar.getSearchAction(context),
       ],
@@ -48,15 +48,15 @@ class GithubListPage extends State<GithubListWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return  Scaffold(
       appBar: searchBar.build(context),
       key: _scaffoldKey,
-      body: new StoreConnector(
+      body:  StoreConnector(
           converter: _ViewModel.fromStore,
           builder: (context, viewModel) {
             var list = viewModel.repoList;
-            return new LoadingWidget(onCompleted: () {
-              return new ListView.builder(
+            return  LoadingWidget(onCompleted: () {
+              return  ListView.builder(
                   padding: const EdgeInsets.all(16.0),
                   itemCount: list.length,
                   itemBuilder: (context, i) {
@@ -69,18 +69,18 @@ class GithubListPage extends State<GithubListWidget> {
 
   Widget _buildRow(RepoEntity entity, _ViewModel viewModel) {
     bool isFavorite = viewModel.favorites.contains(entity);
-    return new Container(
-      key: new ObjectKey(entity.fullName),
-      child: new Column(
+    return  Container(
+      key:  ObjectKey(entity.fullName),
+      child:  Column(
         children: <Widget>[
-          new ListTile(
-              title: new Text(
+           ListTile(
+              title:  Text(
                 entity.fullName,
                 style: _biggerFont,
               ),
-              subtitle: new Text(entity.stars.toString()),
-              trailing: new IconButton(
-                  icon: new Icon(
+              subtitle:  Text(entity.stars.toString()),
+              trailing:  IconButton(
+                  icon:  Icon(
                     isFavorite ? Icons.favorite : Icons.favorite_border,
                     color: isFavorite ? Colors.red : null,
                   ),
@@ -90,7 +90,7 @@ class GithubListPage extends State<GithubListWidget> {
               onTap: () {
                 // TODO 何か処理
               }),
-          new Divider(),
+           Divider(),
         ],
       ),
     );
@@ -110,11 +110,11 @@ class _ViewModel {
       @required this.favorites});
 
   static _ViewModel fromStore(Store<AppState> store) {
-    return new _ViewModel(
+    return  _ViewModel(
         loading: store.state.isLoading,
         repoList: store.state.repoList,
         onFavoriteChanged: (entity) {
-          store.dispatch(new FavoriteAction(
+          store.dispatch( FavoriteAction(
               store.state.favoriteState.favoriteList, entity));
         },
         favorites: store.state.favoriteState.favoriteList);

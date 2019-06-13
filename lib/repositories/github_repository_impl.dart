@@ -8,7 +8,7 @@ import 'package:spike_redux_flutter/repositories/http/github_http_client.dart';
 class GithubRepositoryImpl {
 
   Future<SearchResultDto> fetch(String freeword){
-    GithubHttpClient client = new GithubHttpClient();
+    GithubHttpClient client =  GithubHttpClient();
     return client.fetch(freeword);
   }
 }

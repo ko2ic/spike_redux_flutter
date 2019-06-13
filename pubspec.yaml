@@ -9,22 +9,18 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.0
 
-  redux: "^3.0.0"
-  flutter_redux: "^0.5.0"
+  redux: ^3.0.0
+  flutter_redux: ^0.5.3
 
-  flutter_search_bar: "^2.0.3"
-  http: "^0.11.3+16"
+  flutter_search_bar: ^2.0.7
+  http: ^0.12.0+2
 
 dev_dependencies:
-  mockito: ^3.0.0
-  mock_web_server: ^2.1.0
+  mockito: ^4.1.0
+  mock_web_server: ^4.0.0
   flutter_test:
     sdk: flutter
 
-dependency_overrides:
-  mock_web_server:
-    git:
-      url: https://gitlab.com/haarts/MockWebServer.git
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
 

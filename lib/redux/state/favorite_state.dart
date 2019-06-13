@@ -12,7 +12,7 @@ class FavoriteState {
   FavoriteState copyWith({
     List<RepoEntity> favoriteList,
   }) {
-    return new FavoriteState(
+    return  FavoriteState(
         favoriteList: favoriteList ?? [],
     );
   }

@@ -11,7 +11,7 @@ class RepoEntity {
   final int stars;
 
   factory RepoEntity.fromJson(Map<String, dynamic> json) {
-    return new RepoEntity(
+    return  RepoEntity(
       name: json['name'],
       fullName: json['full_name'],
       stars: json['stargazers_count'],
@@ -23,7 +23,7 @@ class RepoEntity {
     final String fullName,
     final int stars,
   }) {
-    return new RepoEntity(
+    return  RepoEntity(
       name: name ?? this.name,
       fullName: fullName ?? this.fullName,
       stars: stars ?? this.stars,

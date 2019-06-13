@@ -1,6 +1,6 @@
 import 'package:mockito/mockito.dart';
 import 'package:spike_redux_flutter/models/hoge.dart';
-import 'package:test/test.dart';
+import 'package:test_api/test_api.dart';
 
 class MockHoge extends Mock implements Hoge {}
 

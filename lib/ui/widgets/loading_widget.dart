@@ -15,13 +15,13 @@ class LoadingWidget  extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new StoreConnector<AppState, bool>(
+    return  StoreConnector<AppState, bool>(
       distinct: true,
       converter: (Store<AppState> store) => store.state.isLoading,
       builder: (context, isLoading) {
         if (isLoading) {
-          return new Center(
-            child: new CircularProgressIndicator(),
+          return  Center(
+            child:  CircularProgressIndicator(),
           );
         }else{
           return onCompleted();

@@ -7,6 +7,7 @@ import 'package:spike_redux_flutter/redux/reducer/app_state_reducer.dart';
 import 'package:spike_redux_flutter/redux/state/app_state.dart';
 import 'package:spike_redux_flutter/redux/state/hoge_state.dart';
 import 'package:spike_redux_flutter/ui/hoge_page.dart';
+
 import '../test_driver/mock_hoge_repository.dart';
 
 void main() {

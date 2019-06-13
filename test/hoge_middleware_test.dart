@@ -23,7 +23,7 @@ main() {
     test('should fetch hoge', () async {
       final store = Store<AppState>(
         appReducer,
-        initialState: new AppState.loading(),
+        initialState:  AppState.loading(),
         middleware: hogeMiddleware(repository)..add(captor),
       );
 

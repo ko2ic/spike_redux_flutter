@@ -10,7 +10,7 @@ class HogeHttpClient {
 
   factory HogeHttpClient({String baseUrl = 'https://hoge.com'}) {
     if (_instance == null) {
-      _instance = new HogeHttpClient._internal(baseUrl);
+      _instance =  HogeHttpClient._internal(baseUrl);
     }
     return _instance;
   }
@@ -20,6 +20,6 @@ class HogeHttpClient {
   Future<HogeEntity> fetch() async {
     final response = await http.get('$baseUrl/hoge');
     final responseJson = json.decode(response.body);
-    return new HogeEntity.fromJson(responseJson);
+    return  HogeEntity.fromJson(responseJson);
   }
 }

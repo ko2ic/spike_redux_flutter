@@ -25,7 +25,7 @@ class AppState {
     List<RepoEntity> favorites,
     HogeState hogeState,
   }) {
-    return new AppState(
+    return  AppState(
       isLoading: isLoading ?? this.isLoading,
       repoList: repoList ?? this.repoList,
       favoriteState: favorites ?? this.favoriteState,
