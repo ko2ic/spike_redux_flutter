@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
             home: StoreBuilder<AppState>(
               onInit: (store) => store.dispatch(FetchRepoListAction("ko2")),
               builder: (context, store) {
-                return GithubListWidget(store);
+                return GithubListWidget();
               },
             )));
   }
