@@ -9,14 +9,14 @@ import 'package:spike_redux_flutter/redux/action/actions.dart';
 import 'package:spike_redux_flutter/redux/state/app_state.dart';
 import 'package:spike_redux_flutter/ui/widgets/loading_widget.dart';
 
-class GithubListWidget extends StatefulWidget {
+class GithubListPage extends StatefulWidget {
   @override
   createState() {
-    return GithubListPage();
+    return GithubListState();
   }
 }
 
-class GithubListPage extends State<GithubListWidget> {
+class GithubListState extends State<GithubListPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   // 本来はStoreProviderで取得するので、不要だがflutter_search_barを利用指定いるために必要になっている
