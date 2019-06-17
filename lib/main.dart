@@ -29,20 +29,15 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primaryColor: Colors.green,
         ),
-        home: StoreConnector<AppState, _ViewModel>(
+        home: StoreConnector<AppState, bool>(
           distinct: true,
           onInit: (store) => store.dispatch(FetchRepoListAction("ko2")),
-          converter: (store) => _ViewModel(),
-          builder: (context, viewModel) {
+          converter: (store) => true,
+          builder: (context, _) {
             return GithubListPage();
           },
         ),
       ),
     );
   }
-}
-
-class _ViewModel {
-  @override
-  bool operator ==(Object other) => true;
 }
