@@ -19,15 +19,16 @@ class GithubListPage extends StatefulWidget {
 class GithubListState extends State<GithubListPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
+  final _biggerFont = const TextStyle(fontSize: 18.0);
+
   // 本来はStoreProviderで取得するので、不要だがflutter_search_barを利用指定いるために必要になっている
   Store<AppState> _store;
 
   SearchBar searchBar;
-  final _biggerFont = const TextStyle(fontSize: 18.0);
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      title: Text('GitHub検索'),
+      title: const Text('GitHub検索'),
       actions: <Widget>[
         searchBar.getSearchAction(context),
       ],
@@ -47,7 +48,9 @@ class GithubListState extends State<GithubListPage> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _store = StoreProvider.of<AppState>(context);
+    if (_store == null) {
+      _store = StoreProvider.of<AppState>(context);
+    }
   }
 
   @override
@@ -92,8 +95,7 @@ class GithubListState extends State<GithubListPage> {
                     color: isFavorite ? Colors.red : null,
                   ),
                   onPressed: () {
-                    var store = StoreProvider.of<AppState>(context);
-                    store.dispatch(FavoriteAction(store.state.favoriteState.favoriteList, entity));
+                    viewModel.onFavoriteChanged(entity);
                   }),
               onTap: () {
                 // TODO 何か処理
