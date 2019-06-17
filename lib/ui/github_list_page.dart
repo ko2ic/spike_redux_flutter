@@ -52,22 +52,25 @@ class GithubListState extends State<GithubListPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: searchBar.build(context),
-      key: _scaffoldKey,
-      body: StoreConnector(
-          converter: _ViewModel.fromStore,
-          builder: (context, viewModel) {
-            var list = viewModel.repoList;
-            return LoadingWidget(onCompleted: () {
-              return ListView.builder(
-                  padding: const EdgeInsets.all(16.0),
-                  itemCount: list.length,
-                  itemBuilder: (context, i) {
-                    return _buildRow(list[i], viewModel);
-                  });
-            });
-          }),
+    return Stack(
+      children: <Widget>[
+        Scaffold(
+          appBar: searchBar.build(context),
+          key: _scaffoldKey,
+          body: StoreConnector(
+              converter: _ViewModel.fromStore,
+              builder: (context, viewModel) {
+                var list = viewModel.repoList;
+                return ListView.builder(
+                    padding: const EdgeInsets.all(16.0),
+                    itemCount: list.length,
+                    itemBuilder: (context, i) {
+                      return _buildRow(list[i], viewModel);
+                    });
+              }),
+        ),
+        LoadingWidget(),
+      ],
     );
   }
 
