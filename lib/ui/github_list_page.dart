@@ -92,7 +92,8 @@ class GithubListState extends State<GithubListPage> {
                     color: isFavorite ? Colors.red : null,
                   ),
                   onPressed: () {
-                    viewModel.onFavoriteChanged(entity);
+                    var store = StoreProvider.of<AppState>(context);
+                    store.dispatch(FavoriteAction(store.state.favoriteState.favoriteList, entity));
                   }),
               onTap: () {
                 // TODO 何か処理

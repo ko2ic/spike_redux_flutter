@@ -23,17 +23,26 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StoreProvider(
-        store: store,
-        child: MaterialApp(
-            title: 'Flutter Demo',
-            theme: ThemeData(
-              primaryColor: Colors.green,
-            ),
-            home: StoreBuilder<AppState>(
-              onInit: (store) => store.dispatch(FetchRepoListAction("ko2")),
-              builder: (context, store) {
-                return GithubListPage();
-              },
-            )));
+      store: store,
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primaryColor: Colors.green,
+        ),
+        home: StoreConnector<AppState, _ViewModel>(
+          distinct: true,
+          onInit: (store) => store.dispatch(FetchRepoListAction("ko2")),
+          converter: (store) => _ViewModel(),
+          builder: (context, viewModel) {
+            return GithubListPage();
+          },
+        ),
+      ),
+    );
   }
+}
+
+class _ViewModel {
+  @override
+  bool operator ==(Object other) => true;
 }
